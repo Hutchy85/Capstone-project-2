@@ -1,0 +1,2 @@
+1;test;creating file if it doesnt exist;testing the output;2024-02-12;2024-01-04;No
+2;john;gthtyhuj;ythuhik;2024-12-10;2024-01-05;No

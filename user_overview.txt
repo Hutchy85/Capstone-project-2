@@ -1,0 +1,23 @@
+Total users: 3
+Total tasks: 2
+
+User: admin
+Total tasks assigned: 0
+Percentage of total tasks: 0.00%
+Percentage of completed tasks: 0.00%
+Percentage of uncompleted tasks: 0.00%
+Percentage of overdue tasks: 0.00%
+
+User: test
+Total tasks assigned: 1
+Percentage of total tasks: 50.00%
+Percentage of completed tasks: 0.00%
+Percentage of uncompleted tasks: 100.00%
+Percentage of overdue tasks: 0.00%
+
+User: john
+Total tasks assigned: 1
+Percentage of total tasks: 50.00%
+Percentage of completed tasks: 0.00%
+Percentage of uncompleted tasks: 100.00%
+Percentage of overdue tasks: 0.00%

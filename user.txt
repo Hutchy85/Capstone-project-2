@@ -1,0 +1,3 @@
+admin;password
+test;pass
+john;password
