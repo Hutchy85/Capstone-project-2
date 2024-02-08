@@ -139,18 +139,21 @@ def view_mine():
     format of Output 2 presented in the task pdf (i.e. includes spacing
     and labelling)
     '''
-    while True:
-        print("These are your assigned tasks:\n")
-    
-        for t in task_list:
-            if t['username'] == curr_user:
-                disp_str = f"Task ID: \t {t['task_id']}\n" # Displaying the task ID
-                disp_str += f"Task: \t\t {t['title']}\n"
-                disp_str += f"Assigned to: \t {t['username']}\n"
-                disp_str += f"Date Assigned: \t {t['assigned_date'].strftime(DATETIME_STRING_FORMAT)}\n"
-                disp_str += f"Due Date: \t {t['due_date'].strftime(DATETIME_STRING_FORMAT)}\n"
-                disp_str += f"Task Description: \n {t['description']}\n"
-                print(disp_str)
+    assigned_tasks = [t for t in task_list if t['username'] == curr_user]
+
+    if not assigned_tasks:
+        print("\n You have no tasks assigned.")
+        return
+
+    print("These are your assigned tasks:\n")
+    for t in assigned_tasks:
+        disp_str = f"Task ID: \t {t['task_id']}\n" # Displaying the task ID
+        disp_str += f"Task: \t\t {t['title']}\n"
+        disp_str += f"Assigned to: \t {t['username']}\n"
+        disp_str += f"Date Assigned: \t {t['assigned_date'].strftime(DATETIME_STRING_FORMAT)}\n"
+        disp_str += f"Due Date: \t {t['due_date'].strftime(DATETIME_STRING_FORMAT)}\n"
+        disp_str += f"Task Description: \n {t['description']}\n"
+        print(disp_str)
 
         task_edit = input("Enter a task ID to update or enter '-1' to exit to main menu: ")
         if task_edit == '-1':
