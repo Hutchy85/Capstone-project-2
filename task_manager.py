@@ -9,7 +9,15 @@
 import os
 from datetime import datetime, date
 
+import hashlib
+
 DATETIME_STRING_FORMAT = "%Y-%m-%d"
+
+# Function for hashing passwords
+def hash_password(password):
+    sha256 = hashlib.sha256()
+    sha256.update(password.encode('utf-8'))
+    return sha256.hexdigest()
 
 # Function for existing user check
 def check_existing_user(username):
@@ -39,9 +47,10 @@ def reg_user():
 
         # - Check if the new password and confirmed password are the same.
         if new_password == confirm_password:
+            hashed_password = hash_password(new_password)
             # - If they are the same, add them to the user.txt file,
             print("New user added")
-            username_password[new_username] = new_password
+            username_password[new_username] = hashed_password
             
             with open("user.txt", "w") as out_file:
                 user_data = []
@@ -352,15 +361,15 @@ for user in user_data:
     username_password[username] = password
 
 logged_in = False
-while not logged_in:
 
+while not logged_in:
     print("LOGIN")
     curr_user = input("Username: ")
     curr_pass = input("Password: ")
     if curr_user not in username_password.keys():
         print("User does not exist")
         continue
-    elif username_password[curr_user] != curr_pass:
+    elif username_password[curr_user] != hash_password(curr_pass):  # Hashing the entered password
         print("Wrong password")
         continue
     else:
